@@ -1,0 +1,63 @@
+{
+  "$id": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/dataset.schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "creation_time": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "name": {
+      "$ref": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/multilingual_data.schema.json"
+    },
+    "rde_type": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "end_time": {
+      "type": "string"
+    },
+    "metadata": {
+        "$ref": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/metadata.schema.json"
+    },
+    "configuration": {
+      "$ref": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/configuration.schema.json"
+    },
+    "has_areas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "creation_time",
+    "end_time",
+    "has_areas",
+    "name",
+    "version",
+    "metadata",
+    "configuration",
+    "slug",
+    "sources",
+    "start_time",
+    "rde_type",
+    "id"
+  ],
+  "additionalProperties": false
+}

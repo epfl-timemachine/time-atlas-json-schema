@@ -1,0 +1,54 @@
+{
+  "$id": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/historical_record.schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "dataset": {
+      "type": "string"
+    },
+    "rde_type": {
+      "type": "string"
+    },
+    "paradata": {
+      "type": "string"
+    },
+    "has_observations": {
+      "type": "array",
+      "items": {
+          "type": "string"
+      }
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "end_time": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "rights_attribution": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "metadata",
+    "dataset",
+    "has_observations",
+    "end_time",
+    "paradata",
+    "rde_type",
+    "start_time",
+    "id"
+  ],
+  "additionalProperties": false
+}

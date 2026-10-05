@@ -1,0 +1,61 @@
+{
+    "$id": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/file.schema.json",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type_in_file": {
+          "type": "array",
+          "items": {
+            "enum": ["historical_record",  "observation", "point_of_interest", "geometry", "dataset", "map", "layer", "area", "dictionary"]
+          }
+        }
+      },
+      "creation_time": {
+        "type": "string"
+      },
+      "related_dataset_slugs": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1
+      },
+      "rde_objects": {
+        "type": "array",
+        "items": {
+         "anyOf": [
+            {
+              "$ref": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/observation.schema.json"
+            },
+            {
+              "$ref": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/historical_record.schema.json"
+            },
+            {
+              "$ref": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/point_of_interest.schema.json"
+            },
+            {
+              "$ref": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/geometry.schema.json"
+            },
+            {
+              "$ref": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/dataset.schema.json"
+            },
+            {
+              "$ref": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/layer.schema.json"
+            },
+            {
+              "$ref": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/map.schema.json"
+            },
+            {
+              "$ref": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/area.schema.json"
+            }
+          ]
+        }
+      }
+    },
+    "required": [
+      "name",
+      "creation_time",
+      "type_in_file",
+      "rde_objects"
+    ]
+  }

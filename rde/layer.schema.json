@@ -1,0 +1,98 @@
+{
+  "$id": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/layer.schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fr": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "it": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "en"
+      ]
+    },
+    "description": {
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fr": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "it": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "en"
+      ]
+    },
+    "slug": {
+      "type": "string"
+    },
+    "map": {
+      "type": "string"
+    },
+    "type": {
+       "enum": ["vector", "raster"] 
+    },
+    "rde_type": {
+      "type": "string"
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "end_time": {
+      "type": "string"
+    },
+    "layer_configurations": {
+      "type": "array",
+      "items": {
+        "$ref": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/layer_configuration.schema.json"
+      }
+    }
+  },
+  "required": [
+    "map",
+    "description",
+    "end_time",
+    "name",
+    "layer_configurations",
+    "rde_type",
+    "slug",
+    "start_time",
+    "type",
+    "id"
+  ],
+  "additionalProperties": false
+}

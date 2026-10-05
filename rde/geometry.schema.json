@@ -1,0 +1,138 @@
+{
+  "$id": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/geometry.schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "part_of_layer": {
+      "type": "string"
+    },
+    "rde_type": {
+      "type": "string"
+    },
+    "geometry": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "coordinates": {
+          "oneOf":
+          [
+            {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                  }
+                }
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                  "type": "number"
+              }
+            }
+          ]
+        },
+        "geometries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "coordinates": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                  }
+                ]
+              }
+            },
+            "required": ["type", "coordinates"]
+          }
+        }
+      },
+      "required": [
+        "type"
+      ]
+    }
+  },
+  "required": [
+    "part_of_layer",
+    "rde_type",
+    "id",
+    "geometry"
+  ],
+  "additionalProperties": false
+}

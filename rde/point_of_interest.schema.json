@@ -1,0 +1,44 @@
+{
+  "$id": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/point_of_interest.schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "rde_type": {
+      "type": "string"
+    },
+    "terrain_height": {
+      "type": "number"
+    },
+    "building_height": {
+      "type": "number"
+    },
+    "geometry": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "coordinates",
+        "type"
+      ]
+    }
+  },
+  "required": [
+    "rde_type",
+    "id",
+    "geometry",
+    "terrain_height",
+    "building_height"
+  ],
+  "additionalProperties": true
+}

@@ -1,0 +1,51 @@
+{
+    "$id": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/layer_configuration.schema.json",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "rde_type": {
+            "type": "string"
+        },
+        "extent": {
+            "type": "array",
+            "items": {
+                "type": "number"
+            },
+            "minItems": 4,
+            "maxItems": 4
+        },
+        "min_zoom_level": {
+            "type": "integer"
+        },
+        "max_zoom_level": {
+            "type": "integer"
+        },
+        "service": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "url",
+                "type"
+            ],
+            "additionalProperties": true
+        }
+    },
+    "required": [
+        "service",
+        "id",
+        "extent",
+        "min_zoom_level",
+        "max_zoom_level",
+        "rde_type"
+    ],
+    "additionalProperties": false
+}

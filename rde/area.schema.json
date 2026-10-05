@@ -1,0 +1,178 @@
+{
+  "$id": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/area.schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "$ref": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/multilingual_data.schema.json"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "rde_type": {
+      "type": "string"
+    },
+    "geometry": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "Point"
+            },
+            "coordinates": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 3,
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "required": ["type", "coordinates"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "LineString"
+            },
+            "coordinates": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 3,
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "required": ["type", "coordinates"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "Polygon"
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 4,
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "required": ["type", "coordinates"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "MultiPoint"
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 3,
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "required": ["type", "coordinates"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "MultiLineString"
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "required": ["type", "coordinates"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "MultiPolygon"
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "minItems": 4,
+                  "items": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 3,
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": ["type", "coordinates"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "GeometryCollection"
+            },
+            "geometries": {
+              "type": "array",
+              "items": {
+                "$ref": "#/properties/geometry"
+              }
+            }
+          },
+          "required": ["type", "geometries"]
+        }
+      ]
+    }
+  },
+  "required": [
+    "rde_type",
+    "name",
+    "slug",
+    "id",
+    "geometry"
+  ],
+  "additionalProperties": false
+}

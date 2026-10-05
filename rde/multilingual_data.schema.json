@@ -1,0 +1,40 @@
+{
+    "$id": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/multilingual_data.schema.json",
+    "type": "object",
+    "properties": {
+        "en": {
+            "type": "array",
+            "items": {
+            "type": "string"
+            }
+        },
+        "fr": {
+            "type": "array",
+            "items": {
+            "type": "string"
+            }
+        },
+        "it": {
+            "type": "array",
+            "items": {
+            "type": "string"
+            }
+        },
+        "de": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "nl": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "required": [
+        "en"
+    ],
+  "additionalProperties": true
+}

@@ -1,0 +1,82 @@
+{
+  "$id": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/configuration.schema.json",
+  "type": "object",
+  "properties": {
+    "main_label": {
+      "type": "string"
+    },
+    "sub_label": {
+      "type": "string"
+    },
+    "display_thumbnail": {
+      "type": "boolean"
+    },
+    "external_source": {
+      "type": "boolean"
+    },
+    "metadata_field_config": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": [
+              "string"
+            ]
+          },
+          "display_label": {
+            "$ref": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/multilingual_data.schema.json"
+          },
+          "nullable": {
+            "type": "boolean"
+          },
+          "indexable": {
+            "type": "boolean"
+          },
+          "short_display": {
+            "type": "boolean"
+          },
+          "hidden": {
+            "type": "boolean"
+          },
+          "tag": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "paradata": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "display_label",
+          "hidden",
+          "id",
+          "indexable",
+          "tag",
+          "paradata",
+          "nullable",
+          "short_display",
+          "type"
+        ]
+      }
+    }
+  },
+  "required": [
+    "main_label",
+    "metadata_field_config",
+    "sub_label",
+    "display_thumbnail"
+  ]
+}

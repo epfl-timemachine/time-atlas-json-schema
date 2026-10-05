@@ -1,0 +1,64 @@
+{
+  "$id": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/observation.schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "rde_type": {
+      "type": "string"
+    },
+    "has_geometries": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "historical_record": {
+      "type": "string"
+    },
+    "part_of_point_of_interest": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "geometry": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "coordinates",
+        "type"
+      ]
+    }
+  },
+  "required": [
+    "historical_record",
+    "has_geometries",
+    "part_of_point_of_interest",
+    "rde_type",
+    "id"
+  ],
+  "additionalProperties":false
+}

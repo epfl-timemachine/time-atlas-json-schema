@@ -1,0 +1,22 @@
+{
+    "$id": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/metadata.schema.json",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "type": {
+                "type": "string"
+            },
+            "label": {
+                "$ref": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/multilingual_data.schema.json"
+            },
+            "value": {
+                "$ref": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/multilingual_data.schema.json"
+            }
+        },
+        "required": [
+            "label",
+            "value"
+        ]
+    }
+}

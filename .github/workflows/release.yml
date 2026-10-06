@@ -1,0 +1,80 @@
+name: Prepare schema release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out tagged source
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install validation dependencies
+        run: python3 -m pip install -r requirements-dev.txt
+
+      - name: Test schemas and release tooling
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Verify tag and build release bundle
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: python3 scripts/build_release.py --tag "$RELEASE_TAG"
+
+      - name: Upload release files
+        uses: actions/upload-artifact@v4
+        with:
+          name: schema-release
+          if-no-files-found: error
+          path: |
+            dist/*.tar.gz
+            dist/*.manifest.json
+            dist/SHA256SUMS
+            CHANGELOG.md
+
+  draft:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download tested release files
+        uses: actions/download-artifact@v4
+        with:
+          name: schema-release
+
+      - name: Verify release checksums
+        working-directory: dist
+        run: sha256sum --check SHA256SUMS
+
+      - name: Create draft release with all assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          RELEASE_VERSION="${RELEASE_TAG#v}"
+          gh release create "$RELEASE_TAG" \
+            "dist/time-atlas-rde-schemas-${RELEASE_VERSION}.tar.gz" \
+            "dist/time-atlas-rde-schemas-${RELEASE_VERSION}.manifest.json" \
+            dist/SHA256SUMS \
+            --draft \
+            --verify-tag \
+            --title "RDE schemas ${RELEASE_TAG}" \
+            --notes-file CHANGELOG.md

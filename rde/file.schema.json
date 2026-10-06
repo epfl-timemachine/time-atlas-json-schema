@@ -1,17 +1,20 @@
 {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "https://epfl-timemachine.github.io/time-atlas-json-schema/rde/file.schema.json",
     "type": "object",
     "properties": {
       "name": {
-        "type_in_file": {
-          "type": "array",
-          "items": {
-            "enum": ["historical_record",  "observation", "point_of_interest", "geometry", "dataset", "map", "layer", "area", "dictionary"]
-          }
-        }
+        "type": "string"
       },
       "creation_time": {
         "type": "string"
+      },
+      "type_in_file": {
+        "type": "array",
+        "items": {
+          "enum": ["historical_record", "hr", "observation", "obs", "point_of_interest", "poi", "geometry", "geom", "dataset", "map", "layer", "area", "dictionary"]
+        },
+        "minItems": 1
       },
       "related_dataset_slugs": {
         "type": "array",
